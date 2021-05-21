@@ -1,0 +1,14 @@
+.card-content{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card-content__image {
+  display: flex;
+  width: fit-content;
+}
+
+.card-content__summary {
+  margin: 0 auto;
+}

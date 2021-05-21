@@ -1,0 +1,67 @@
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-title">Compare products</h4>
+    <button type="button" class="close" aria-describedby="modal-title" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <h3 style="margin: 1rem 2rem; text-align: center;">Select 2 to 4 products to compare</h3>
+  <!-- <div class="modal-body" style="display:flex; justify-content: center;">
+      <div class="card-content" style=" display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            align-content: center;
+            justify-content: center;"
+            *ngFor="let product of products">
+            <img [src]="product.images.PRIMARY.product.url" [alt]="product.name"
+                  style=" width: 40%;
+                          align-self: center;">
+          <div class="card-content__summary"
+               style="display: flex;
+                      flex-direction: column;">
+            <p style="display: inline;
+                      text-align: center;
+                      margin: 0.6rem 0;">{{product.name}}</p>
+            <p style="display: inline;
+                      text-align: center;
+                      margin: 0.6rem 0;">{{product.price.formattedValue}}</p>
+            <p class="lead" style="display: inline;
+                                   text-align: center;
+                                   margin: 0.6rem 0;">SKU: {{product.code}}</p>
+          </div>
+      </div>
+  </div> -->
+  <div class="modal-body" style="display:flex; justify-content: center;">
+  <div class="card-content" style=" display: flex;
+              flex-direction: column;
+              align-items: center;"
+              >
+              <table style="width: 80%;" >
+                <thead style="text-align: center;">
+                  <th style="padding: 5%; width: 10%; border-right: solid 1px var(--cx-color-light);
+                             border-bottom: solid 1px var(--cx-color-light) ">Product</th>
+                  <th style="padding: 5%; width: 10%; border-right: solid 1px var(--cx-color-light);
+                  border-bottom: solid 1px var(--cx-color-light) ">Name</th>
+                  <th style="padding: 5%; width: 10%; border-right: solid 1px var(--cx-color-light);
+                  border-bottom: solid 1px var(--cx-color-light) ">Code</th>
+                  <th style="padding: 5%; width: 10%; border-right: solid 1px var(--cx-color-light);
+                  border-bottom: solid 1px var(--cx-color-light) ">Price</th>
+                </thead>
+                <tbody style="text-align: center;">
+                  <tr *ngFor="let product of products">
+                    <td id="image" style="border-right: solid 1px var(--cx-color-light);">
+                      <img style="width: 50%;" [src]="product.images.PRIMARY.product.url" [title]="product.name">
+                    </td>
+                    <td id="name" style=" padding: 5%; border-right: solid 1px var(--cx-color-light);">{{product.name}}</td>
+                    <td style="padding: 5%; border-right: solid 1px var(--cx-color-light);">{{product.code}}</td>
+                    <td style="padding: 5%; border-right: solid 1px var(--cx-color-light);">{{product.price.formattedValue}}</td>
+                  </tr>
+                </tbody>
+
+              </table>
+  </div>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Continue buying</button>
+    <button type="button" class="btn btn-danger" [routerLink]="['/compare-page']"  (click)="modal.dismiss('Ok click')">Compare</button>
+  </div>

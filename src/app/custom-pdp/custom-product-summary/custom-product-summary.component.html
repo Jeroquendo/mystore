@@ -1,0 +1,11 @@
+<ng-container *ngIf="product$ | async as product" >
+  <p class="lead">SKU: {{product.code}}</p>
+  <p>{{product.summary}}</p>
+  <p><cx-icon [type]="iconTypes.INFO"></cx-icon> Quantity ({{ product.stock.stockLevel }} available)</p>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" (change)="checkChanged()" [checked]="disabledCheckbox">
+    <label class="form-check-label" for="flexCheckDefault">
+      Compare
+    </label>
+  </div>
+</ng-container>
