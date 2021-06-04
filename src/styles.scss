@@ -2,3 +2,65 @@
 
 $styleVersion: 3.1;
 @import '~@spartacus/styles/index';
+
+
+/*===== GOOGLE FONTS =====*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+:root {
+  /*===== Fuente y tipografia =====*/
+  --body-font: 'Poppins', sans-serif;
+  --h1-font-size: 1.5rem;
+  --h2-font-size: 1.25rem;
+  --normal-font-size: 1rem;
+  --small-font-size: .875rem;
+}
+
+
+.card-content{
+  display:flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 47%;
+  padding: 10px 0;
+}
+
+.card-content p {
+  font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+}
+
+.card-content__image {
+  display: flex;
+  width: fit-content;
+}
+
+.card-content__summary {
+  margin: 0 auto;
+  color: white;
+}
+
+.card-modal {
+  position: relative;
+  background-color: var(--cx-color-primary);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+// .card-modal::before {
+//   content: '';
+//   position: absolute;
+//   top: -50%;
+//   width: 100%;
+//   height: 100%;
+// }
+
+// .card-modal img {
+//   position: relative;
+// }
+
+.modal-body {
+  display: flex;
+  justify-content: space-around;
+}

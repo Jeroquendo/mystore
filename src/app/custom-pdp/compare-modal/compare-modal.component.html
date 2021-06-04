@@ -5,33 +5,34 @@
     </button>
   </div>
   <h3 style="margin: 1rem 2rem; text-align: center;">Select 2 to 4 products to compare</h3>
-  <!-- <div class="modal-body" style="display:flex; justify-content: center;">
-      <div class="card-content" style=" display: flex;
-            flex-wrap: wrap;
-            flex-direction: column;
-            align-content: center;
-            justify-content: center;"
+  <div class="modal-body">
+      <div class="card-content card-modal"
             *ngFor="let product of products">
             <img [src]="product.images.PRIMARY.product.url" [alt]="product.name"
-                  style=" width: 40%;
-                          align-self: center;">
+                  style=" width: 45%;
+                          align-self: center;
+                          padding-top: 10px;
+                          border-radius: 50%;">
           <div class="card-content__summary"
                style="display: flex;
                       flex-direction: column;">
+            <h3 style="display: inline;
+                      text-align: center;
+                      letter-spacing: 1px;
+                      margin: 15px 0 10px;">Camera {{product.name}}</h3>
             <p style="display: inline;
                       text-align: center;
-                      margin: 0.6rem 0;">{{product.name}}</p>
-            <p style="display: inline;
-                      text-align: center;
-                      margin: 0.6rem 0;">{{product.price.formattedValue}}</p>
+                      letter-spacing: 1px;
+                      margin: 0.6rem 0 0.3rem;">{{product.price.formattedValue}}</p>
             <p class="lead" style="display: inline;
                                    text-align: center;
-                                   margin: 0.6rem 0;">SKU: {{product.code}}</p>
+                                   letter-spacing: 0.5px;
+                                   margin: 0.6rem 0 0.3rem;">Code: {{product.code}}</p>
           </div>
       </div>
-  </div> -->
-  <div class="modal-body" style="display:flex; justify-content: center;">
-  <div class="card-content" style=" display: flex;
+  </div>
+  <!-- <div class="modal-body" style="display:flex; justify-content: center;">
+  <div class="card-modal" style=" display: flex;
               flex-direction: column;
               align-items: center;"
               >
@@ -59,9 +60,9 @@
 
               </table>
   </div>
-  </div>
+  </div> -->
 
   <div class="modal-footer">
     <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Continue buying</button>
-    <button type="button" class="btn btn-danger" [routerLink]="['/compare-page']"  (click)="modal.dismiss('Ok click')">Compare</button>
+    <button type="button" class="btn btn-primary" [routerLink]="['/compare-page']"  (click)="modal.dismiss('Ok click')">Compare</button>
   </div>
