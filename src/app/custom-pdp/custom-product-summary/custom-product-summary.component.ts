@@ -26,6 +26,9 @@ export class CustomProductSummaryComponent implements OnInit {
   products: Product[];
   sub: Subscription | undefined;
   productCode: string;
+  response: Subscription;
+  currentProduct: any;
+  productsModal: any;
 
   constructor(private customProductService: CustomProductService,
              private _modalService: NgbModal,
@@ -33,10 +36,14 @@ export class CustomProductSummaryComponent implements OnInit {
 
   ngOnInit(): void {
     this.product$.subscribe(
-      product => this.productCode = product.code);
+      product => {
+        this.productCode = product.code;
+        this.currentProduct = product;
+      });
 
     this.store.select('productsModal').subscribe(
       (products: any) => {
+          this.productsModal = products;
           for(const key in products){
             console.log(key);
             console.log('entre aqui', this.productCode);
@@ -45,68 +52,41 @@ export class CustomProductSummaryComponent implements OnInit {
               this.disabledCheckbox = products[key].showProductModal;
             }
           }
-        })
-        // if (products) {
-        //   this.displayModal = products.showProductModal;
-        // }
-
+        });
   }
 
 
-  // openModal(){
-  //   this.toggleModal = true;
-  // }
-
-  // open(name: string): void {
-  //   console.log(JSON.parse(localStorage.getItem('product')));
-  //   const existingProduct = JSON.parse(localStorage.getItem('product'));
-  //   if(existingProduct){
-  //     console.log('entre');
-  //     localStorage.setItem('product', JSON.stringify([this.productSummary, ...existingProduct]));
-  //   } else {
-  //     localStorage.setItem('product', JSON.stringify([this.productSummary]));
-  //   }
-  //   this._modalService.open(CompareModalComponent);
-  // }
-
-  // onClickModal(): void {
-  //   if(!this.disabledCheckbox){
-  //     this.disabledCheckbox = !this.disabledCheckbox;
-  //   }
-  // }
-
   checkChanged(): void {
+    if(Object.keys(this.productsModal).length === 0){
+      this.disabledCheckbox = false;
+    }
+    console.log(this.productsModal);
+    console.log(this.disabledCheckbox);
     !this.disabledCheckbox ?
     this.store.dispatch(
       { type: '[Product] Add Product Modal',
-          currentProduct: this.productCode
+          currentProduct: this.productCode,
+          nameProduct: this.currentProduct.name,
+          image: this.currentProduct.images.PRIMARY.product.url,
+          price: this.currentProduct.price.formattedValue,
         }
     ):
     this.store.dispatch(
       { type: '[Product] Remove Product Modal',
-          currentProduct: this.productCode,
+          currentProduct: this.productCode
         }
-    )
+    );
     this.store.select('productsModal').subscribe(
       (products: any) => {
           if(Object.keys(products).length !== 0) {
             this._modalService.open(CompareModalComponent)
           }
-        });
+        }).unsubscribe();
+    // this.disabledCheckbox = !this.disabledCheckbox;
+    // console.log(this.disabledCheckbox);
     // if(this.customProductService.productsToCompare(this.product$)){
 
     // }
   }
 
-  open():void {
-    // console.log(this.customProductService.productsToCompare());
-    // this.products = this.customProductService.productsToCompare()
-    //   .filter((value,index) => {
-    //     return this.customProductService.productsToCompare().indexOf(value) === index;
-    //   });
-
-    if(!this.disabledCheckbox){
-      this.disabledCheckbox = !this.disabledCheckbox;
-    }
-  }
 }
