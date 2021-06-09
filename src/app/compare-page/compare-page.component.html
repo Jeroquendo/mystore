@@ -1,193 +1,27 @@
-<!-- <p>compare-page works!</p>
-<ng-container *ngIf="product$ | async as product"></ng-container>
-<div class="products">
-  <div class="product">
-    <div class="product__flex-row">
-      <img [src]='product1.url' alt="DSLR-A100H">
-      <div class="product-description">
-        <h3>{{product1.name}}</h3>
-        <p>$ {{product1.price.value}}</p>
-        <p>{{product1.description}}</p>
-        <button (click)='toggleSpecs()'>{{showSpec ? 'Hide' : 'Show'}} specs</button>
-      </div>
-    </div>
-    <div *ngIf="showSpec">
-      <h2>Specs</h2>
-      <table>
-        <th>
-          <h3>Technical details</h3>
-        </th>
-        <tr>
-          <td>Source data-sheet</td>
-          <td>ICEcat.biz</td>
-        </tr>
-        <tr>
-          <td>languages support</td>
-          <td>
-            English / French / German / Spanish / Italian / Portugese /
-             Dutch / Russian </td>
-        </tr>
-      </table>
-      <table>
-        <th>
-          <h3>Memory</h3>
-        </th>
-        <tr>
-          <td>Compatible memory cards</td>
-          <td>cf,memory stick (ms),ms pro,microdrive</td>
-        </tr>
-      </table>
-      <table>
-        <th>
-          <h3>Display</h3>
-        </th>
-        <tr>
-          <td>Display</td>
-          <td>TFT</td>
-        </tr>
-        <tr>
-          <td>Display diagonal</td>
-          <td>2.5 "</td>
-        </tr>
-      </table>
-      <table>
-        <th>
-          <h3>Picture quality</h3>
-        </th>
-        <tr>
-          <td>Megapixel</td>
-          <td>10.2 MP</td>
-        </tr>
-        <tr>
-          <td>Supported camera resolutions</td>
-          <td>3880 × 2600 3872 × 2592 2896 × 1936 1920 × 1280</td>
-        </tr>
-        <tr>
-          <td>Maximum resolution</td>
-          <td>
-            3880 × 2600 pixels</td>
-        </tr>
-      </table>
-    </div>
-  </div>
-  <div class="product">
-    <div class="product__flex-row">
-      <img [src]='product2.url' alt="Alpha-350">
-      <div class="product-description">
-        <h3>{{product2.name}}</h3>
-        <p>${{product2.price.value}}</p>
-        <p>{{product2.description}}</p>
-        <button (click)='toggleSpecs2()'>{{showSpec1 ? 'Hide' : 'Show'}} specs</button>
-      </div>
-    </div>
-    <div *ngIf="showSpec1">
-      <h2>Specs</h2>
-      <table>
-        <th>
-          <h3>Technical details</h3>
-        </th>
-        <tr>
-          <td>Source data-sheet</td>
-          <td>ICEcat.biz</td>
-        </tr>
-        <tr>
-          <td>languages support</td>
-          <td>
-            English / French / German / Spanish / Italian / Portugese /
-             Dutch / Russian </td>
-        </tr>
-      </table>
-      <table>
-        <th>
-          <h3>Memory</h3>
-        </th>
-        <tr>
-          <td>Compatible memory cards</td>
-          <td>cf,memory stick (ms),ms pro,microdrive</td>
-        </tr>
-      </table>
-      <table>
-        <th>
-          <h3>Display</h3>
-        </th>
-        <tr>
-          <td>Display</td>
-          <td>LCD</td>
-        </tr>
-        <tr>
-          <td>Display diagonal</td>
-          <td>2.7 "</td>
-        </tr>
-      </table>
-      <table>
-        <th>
-          <h3>Picture quality</h3>
-        </th>
-        <tr>
-          <td>Megapixel</td>
-          <td>14.2 MP</td>
-        </tr>
-        <tr>
-          <td>Supported camera resolutions</td>
-          <td>4592 × 3056 4592 × 3056 3408 × 2272 2288 × 1520</td>
-        </tr>
-        <tr>
-          <td>Maximum resolution</td>
-          <td>4592 × 3056 pixels</td>
-        </tr>
-      </table>
-    </div>
-  </div>
-</div>
 
- -->
-<div class="container" style="display: flex; width: fit-content; margin: 5rem ;" *ngIf="products.length > 0">
-  <div class="card-content" style=" display: flex;
-              flex-direction: column;
-              align-items: center;"
-
-              >
-    <table style="width: 60%;" >
-      <thead style="text-align: center;">
-        <th>Product</th>
-        <th>Name</th>
-        <th>Code</th>
-        <th>Price</th>
-        <th>Description</th>
-      </thead>
-      <tbody style="text-align: center;">
-        <tr *ngFor="let product of products">
-          <td id="image" style="border-right: solid 1px var(--cx-color-light);">
-            <img [src]="product.images.PRIMARY.product.url" [title]="product.name">
-          </td>
-          <td id="name" style="border-right: solid 1px var(--cx-color-light);">{{product.name}}</td>
-          <td style="border-right: solid 1px var(--cx-color-light);">SKU: {{product.code}}</td>
-          <td style="border-right: solid 1px var(--cx-color-light);">{{product.price.formattedValue}}</td>
-          <td id="description" style="border-left: solid 1px var(--cx-color-light);">{{product.summary}}</td>
-        </tr>
-      </tbody>
-
-    </table>
-    <!-- <img src="{{product.images.PRIMARY.product.url}}" alt="{{product.name}}"
-        style=" width: 60%;
-                margin: 0 2rem;
-                height: fit-content;">
-    <div class="card-content__summary"
-        style="display: flex;
-              flex-direction: column;">
-      <p style="display: inline;
-                align-self: center;
-                margin: 0.6rem 0;">{{product.name}}</p>
-      <p style="display: inline;
-                align-self: center;
-                margin: 0.6rem 0;">{{product.price.formattedValue}}</p>
-      <p class="lead" style="display: inline;
-                             align-self: center;
-                             margin: 0.6rem 0;">SKU: {{product.code}}</p>
-      <p style="display: inline;
-                align-self: center;
-                margin: 0.6rem 0;
-                text-align: center;">Description: {{product.summary}}</p>
-    </div> -->
+<div class="container modal-body" style="margin-top: 30px; margin-bottom: 30px;" *ngIf="products">
+    <div class="card-content card-modal" id="card-dark"
+          *ngFor="let product of products | keyvalue">
+          <img [src]="product.value?.image" [alt]="product.value?.name"
+                style=" width: 45%;
+                        align-self: center;
+                        padding-top: 10px;
+                        border-radius: 50%;">
+        <div class="card-content__summary"
+              style="display: flex;
+                    flex-direction: column;">
+          <h3 style="display: inline;
+                    text-align: center;
+                    letter-spacing: 1px;
+                    margin: 15px 0 10px;">Camera {{product.value?.nameProduct}}</h3>
+          <p style="display: inline;
+                    text-align: center;
+                    letter-spacing: 1px;
+                    margin: 0.6rem 0 0.3rem;">{{product.value?.price}}</p>
+          <p class="lead" style="display: inline;
+                                  text-align: center;
+                                  letter-spacing: 0.5px;
+                                  margin: 0.6rem 0 0.3rem;">Code: {{product.value?.productCode}}</p>
+        </div>
   </div>
 </div>

@@ -22,7 +22,7 @@ $styleVersion: 3.1;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-between;
-  width: 47%;
+  width: 40%;
   padding: 10px 0;
 }
 
@@ -37,7 +37,6 @@ $styleVersion: 3.1;
 }
 
 .card-content__summary {
-  margin: 0 auto;
   color: white;
 }
 
@@ -63,4 +62,9 @@ $styleVersion: 3.1;
 .modal-body {
   display: flex;
   justify-content: space-around;
+}
+
+#card-dark {
+  background-color: var(--cx-color-dark);
+  width: auto;
 }

@@ -5,8 +5,7 @@
     </button>
   </div>
   <h3 style="margin: 1rem 2rem; text-align: center;">Select 2 to 4 products to compare</h3>
-  <div class="modal-body">
-    <div *ngIf="products">
+  <div class="modal-body" *ngIf="products">
       <div class="card-content card-modal"
             *ngFor="let product of products | keyvalue">
             <img [src]="product.value?.image" [alt]="product.value?.name"
@@ -30,7 +29,6 @@
                                    letter-spacing: 0.5px;
                                    margin: 0.6rem 0 0.3rem;">Code: {{product.value?.productCode}}</p>
           </div>
-      </div>
       </div>
   </div>
   <!-- <div class="modal-body" style="display:flex; justify-content: center;">

@@ -3,6 +3,10 @@ import { Product } from '@spartacus/core';
 import { Observable } from 'rxjs';
 import { CustomProductService } from '../custom-pdp/custom-product.service';
 
+/* NgRx imports */
+import { Store } from '@ngrx/store';
+import { State } from '../custom-pdp/state/product.reducer';
+
 @Component({
   selector: 'app-compare-page',
   templateUrl: './compare-page.component.html',
@@ -15,10 +19,14 @@ export class ComparePageComponent implements OnInit {
   products: Product[];
   product: Observable<Product>
 
-  constructor(private customProductService: CustomProductService) { }
+  constructor(private customProductService: CustomProductService, private store: Store<State>) { }
 
   ngOnInit():void {
-    this.products = this.customProductService.productsToCompare(this.product);
+    this.store.select('productsModal').subscribe(
+      (products:any) => {
+        this.products = products;
+        console.log(this.products);
+      }
+    )
   }
-
 }

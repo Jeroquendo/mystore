@@ -8,7 +8,7 @@ const STATIC_ROUTES: Routes = [
   { path: 'compare-page',
     component: ComparePageComponent,
     canActivate: [CmsPageGuard],
-    data: {pageLabel: 'compare products'}
+    data: {pageLabel: 'homepage'}
   }
 ];
 
