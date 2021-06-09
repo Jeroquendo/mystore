@@ -8,16 +8,21 @@ export interface State extends AppState.State {
 
 export interface ProductState {
   showProductModal: boolean;
-
+  nameProduct: string;
+  image: any;
+  price: number;
 }
 
 export const productReducer =  createReducer<any>(
   {} as any,
-  on( createAction('[Product] Add Product Modal', props<{currentProduct: number}>()), (state, {currentProduct}) => {
+  on( createAction('[Product] Add Product Modal', props<any>()), (state, {currentProduct, nameProduct, image, price}) => {
     return {
       ...state,
       [currentProduct]: {
-        showProductModal: !state.showProductModal
+        showProductModal: !state.showProductModal,
+        nameProduct: nameProduct,
+        image: image,
+        price: price
       }
     };
   }),
